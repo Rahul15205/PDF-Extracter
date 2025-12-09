@@ -11,16 +11,21 @@ function logAction(status, filename, details = {}) {
         ...details
     };
 
-    let logs = [];
-    if (fs.existsSync(LOG_FILE)) {
-        try {
-            logs = JSON.parse(fs.readFileSync(LOG_FILE, 'utf8'));
-        } catch (e) {
-            logs = [];
+    // In Vercel/Production (Read-Only FS), this might fail. We handle it gracefully.
+    try {
+        if (fs.existsSync(LOG_FILE)) {
+            try {
+                logs = JSON.parse(fs.readFileSync(LOG_FILE, 'utf8'));
+            } catch (e) {
+                logs = [];
+            }
         }
+        logs.push(logEntry);
+        fs.writeFileSync(LOG_FILE, JSON.stringify(logs, null, 2));
+    } catch (error) {
+        // Fallback for Vercel or read-only environments
+        console.log('[LOG-FALLBACK]', JSON.stringify(logEntry));
     }
-    logs.push(logEntry);
-    fs.writeFileSync(LOG_FILE, JSON.stringify(logs, null, 2));
 }
 
 module.exports = {
