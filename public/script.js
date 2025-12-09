@@ -47,7 +47,7 @@ extractBtn.addEventListener('click', async () => {
     formData.append('invoice', file);
 
     try {
-        const response = await fetch('http://localhost:3000/upload', {
+        const response = await fetch('/upload', {
             method: 'POST',
             body: formData
         });
@@ -80,7 +80,7 @@ function renderResults(data) {
     // Fill Table
     const tbody = document.querySelector('#itemsTable tbody');
     tbody.innerHTML = '';
-    
+
     if (data.lineItems && Array.isArray(data.lineItems)) {
         data.lineItems.forEach(item => {
             const tr = document.createElement('tr');
@@ -102,7 +102,7 @@ downloadBtn.addEventListener('click', async () => {
     if (!currentData) return;
 
     try {
-        const response = await fetch('http://localhost:3000/export-csv', {
+        const response = await fetch('/export-csv', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(currentData)
