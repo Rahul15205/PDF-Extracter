@@ -1,0 +1,74 @@
+[
+  {
+    "timestamp": "2025-12-09T10:10:25.355Z",
+    "filename": "sample-invoice.pdf",
+    "status": "FAILURE",
+    "error": "Grok API Error: 400"
+  },
+  {
+    "timestamp": "2025-12-09T10:14:32.173Z",
+    "filename": "sample-invoice.pdf",
+    "status": "FAILURE",
+    "error": "Groq API Error: 400"
+  },
+  {
+    "timestamp": "2025-12-09T10:15:52.708Z",
+    "filename": "sample-invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T10:22:27.432Z",
+    "filename": "sample-invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:39:04.412Z",
+    "filename": "sample-invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:44:00.545Z",
+    "filename": "Subscriberinvoice_05_03_2025.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:47:12.248Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:49:57.624Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:52:04.806Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:54:10.938Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:54:33.349Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:55:21.435Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T14:59:42.183Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-12-09T15:00:35.842Z",
+    "filename": "Sample Invoice.pdf",
+    "status": "SUCCESS"
+  }
+]

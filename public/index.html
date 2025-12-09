@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Invoice Extractor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PDF Invoice Extractor</h1>
+            <p>Upload an invoice to extract structured data using AI.</p>
+        </header>
+
+        <section class="upload-section">
+            <div class="file-drop-area" id="dropArea">
+                <span class="file-msg">Drag & Drop PDF here or Click to Upload</span>
+                <input class="file-input" type="file" id="fileInput" accept=".pdf">
+            </div>
+            <button id="extractBtn" class="primary-btn" disabled>Extract Data</button>
+            <div id="loader" class="hidden">Processing...</div>
+        </section>
+
+        <section id="resultsSection" class="results-section hidden">
+            <div class="actions">
+                <h2>Extraction Results</h2>
+                <button id="downloadBtn" class="secondary-btn">Download CSV</button>
+            </div>
+            
+            <div class="summary-cards">
+                <div class="card">
+                    <h3>Invoice #</h3>
+                    <p id="invNum">-</p>
+                </div>
+                <div class="card">
+                    <h3>Date</h3>
+                    <p id="invDate">-</p>
+                </div>
+                <div class="card">
+                    <h3>Vendor</h3>
+                    <p id="invVendor">-</p>
+                </div>
+                <div class="card">
+                    <h3>Total</h3>
+                    <p id="invTotal">-</p>
+                </div>
+            </div>
+
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Qty</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be injected here -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
