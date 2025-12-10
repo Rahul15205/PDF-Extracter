@@ -43,10 +43,33 @@ extractBtn.addEventListener('click', async () => {
     loader.classList.remove('hidden');
     resultsSection.classList.add('hidden');
 
-    const formData = new FormData();
-    formData.append('invoice', file);
-
     try {
+        const file = fileInput.files[0];
+        let fileToSend = file;
+
+        // PDF TO IMAGE CONVERSION (Client-Side)
+        if (file.type === 'application/pdf') {
+            console.log('Converting PDF to Image...');
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+            const page = await pdf.getPage(1); // Extract Page 1
+
+            const viewport = page.getViewport({ scale: 2.0 }); // High Res
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+            // Convert to Blob
+            fileToSend = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.95));
+            console.log('Conversion complete. Uploading image...');
+        }
+
+        const formData = new FormData();
+        formData.append('invoice', fileToSend, 'invoice.jpg');
+
         const response = await fetch('/upload', {
             method: 'POST',
             body: formData
