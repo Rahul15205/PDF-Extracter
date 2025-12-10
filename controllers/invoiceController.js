@@ -1,4 +1,4 @@
-const { extractTextFromPDF, extractInvoiceData } = require('../services/extractionService');
+const { extractInvoiceData } = require('../services/extractionService');
 const { logAction } = require('../models/logModel');
 const { createObjectCsvStringifier } = require('csv-writer');
 
@@ -11,16 +11,15 @@ exports.uploadAndExtract = async (req, res) => {
         console.log(`Processing file: ${req.file.originalname}`);
         const dataBuffer = req.file.buffer;
 
-        const text = await extractTextFromPDF(dataBuffer);
-
-        const extractionResult = await extractInvoiceData(text);
+        // Vision Extraction on Image Buffer
+        const extractionResult = await extractInvoiceData(dataBuffer);
 
         logAction('SUCCESS', req.file.originalname);
 
         res.json({
             success: true,
             data: extractionResult,
-            rawText: `Raw text length: ${text.length} chars`
+            rawText: 'Processed via Groq Vision API'
         });
 
     } catch (error) {
