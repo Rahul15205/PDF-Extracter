@@ -54,7 +54,7 @@ extractBtn.addEventListener('click', async () => {
             const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
             const page = await pdf.getPage(1); // Extract Page 1
 
-            const viewport = page.getViewport({ scale: 2.0 }); // High Res
+            const viewport = page.getViewport({ scale: 1.5 }); // Balanced Res
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             canvas.height = viewport.height;
@@ -63,7 +63,7 @@ extractBtn.addEventListener('click', async () => {
             await page.render({ canvasContext: context, viewport: viewport }).promise;
 
             // Convert to Blob
-            fileToSend = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.95));
+            fileToSend = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.85));
             console.log('Conversion complete. Uploading image...');
         }
 
